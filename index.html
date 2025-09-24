@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提瓦特代肝服务 - 专业原神代肝</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        :root {
+            --primary: #1e90ff;
+            --secondary: #4169e1;
+            --accent: #ffae00;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* 导航栏样式 */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* 汉堡菜单 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* 英雄区域 */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1200x600/1e90ff/white?text=原神代肝服务') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #ff9900;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 服务部分 */
+        .services {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-color: #ddd;
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .price {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        
+        /* 关于部分 */
+        .about {
+            padding: 5rem 0;
+            background-color: #f9f9f9;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background: url('https://placehold.co/500x600/4169e1/white?text=关于我们') no-repeat center center/cover;
+            border-radius: 10px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        /* 评价部分 */
+        .testimonials {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--secondary);
+        }
+        
+        /* 联系部分 */
+        .contact {
+            padding: 5rem 0;
+            background-color: #f9f9f9;
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* 页脚 */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #444;
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+        }
+        
+        /* GitHub指南部分 */
+        .github-guide {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .guide-steps {
+            margin-top: 2rem;
+        }
+        
+        .guide-step {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .guide-step h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                padding: 1rem 0;
+                text-align: center;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="https://placehold.co/50x50/1e90ff/white?text=G" alt="提瓦特代肝服务">
+                    <span>提瓦特代肝服务</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#services">服务项目</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#testimonials">客户评价</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                    <li><a href="#github-guide">GitHub指南</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>专业原神代肝服务</h1>
+            <p>安全高效 | 价格实惠 | 信誉第一 | 让你的提瓦特之旅更轻松</p>
+            <a href="#contact" class="btn">立即咨询</a>
+        </div>
+    </section>
+
+    <!-- 服务项目 -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>我们的服务</h2>
+                <p>多种代肝服务任您选择，满足您的不同需求</p>
+            </div>
+            <div class="services-grid">
+                <!-- 服务项目1 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://placehold.co/600x400/1e90ff/white?text=每日委托');"></div>
+                    <div class="service-content">
+                        <h3>每日委托</h3>
+                        <p>完成每日4个委托任务+领取奖励</p>
+                        <div class="price">¥5/天</div>
+                        <a href="#contact" class="btn">立即下单</a>
+                    </div>
+                </div>
+                
+                <!-- 服务项目2 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://placehold.co/600x400/4169e1/white?text=深渊螺旋');"></div>
+                    <div class="service-content">
+                        <h3>深渊螺旋</h3>
+                        <p>深渊9-12层满星通关</p>
+                        <div class="price">¥20/期</div>
+                        <a href="#contact" class="btn">立即下单</a>
+                    </div>
+                </div>
+                
+                <!-- 服务项目3 -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://placehold.co/600x400/ffae00/white?text=活动任务');"></div>
+                    <div class="service-content">
+                        <h3>活动任务</h3>
+                        <p>限时活动全奖励获取</p>
+                        <div class="price">¥10-30/活动</div>
+                        <a href="#contact" class="btn">立即下单</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>关于我们</h2>
+                <p>为什么选择我们的代肝服务</p>
+            </div>
+            <div class="about-content">
+                <div class="about-img"></div>
+                <div class="about-text">
+                    <h3>专业原神代肝团队</h3>
+                    <p>我们是一支热爱原神的专业代肝团队，拥有丰富的游戏经验和专业的服务态度。自2020年以来，我们已经为超过5000位玩家提供了优质的代肝服务。</p>
+                    <p>我们的优势：</p>
+                    <ul>
+                        <li>100%手动操作，绝对安全</li>
+                        <li>高效完成，节省您的时间</li>
+                        <li>价格实惠，多种套餐选择</li>
+                        <li>24小时客服，随时解答您的问题</li>
+                        <li>支持咸鱼担保交易，安全有保障</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价 -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>客户评价</h2>
+                <p>来自真实客户的声音</p>
+            </div>
+            <div class="testimonials-grid">
+                <!-- 评价1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"非常专业的代肝，每天准时完成日常，还会贴心截图汇报进度，强烈推荐！"</p>
+                    </div>
+                    <div class="testimonial-author">- 旅行者A</div>
+                </div>
+                
+                <!-- 评价2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"深渊代打效率很高，一次就满星了，价格也很合理，下次还会光顾！"</p>
+                    </div>
+                    <div class="testimonial-author">- 旅行者B</div>
+                </div>
+                
+                <!-- 评价3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>"因为工作忙没时间做活动，找了这家代肝，活动奖励全部拿到了，非常满意！"</p>
+                    </div>
+                    <div class="testimonial-author">- 旅行者C</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>联系我们</h2>
+                <p>随时为您提供优质服务</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>获取代肝服务</h3>
+                    <p>请通过以下方式联系我们，我们会尽快回复您</p>
+                    <ul>
+                        <li><i class="fas fa-store"></i> 咸鱼店铺: @你的咸鱼用户名</li>
+                        <li><i class="fab fa-qq"></i> QQ: 你的QQ号</li>
+                        <li><i class="fab fa-weixin"></i> 微信: 你的微信号</li>
+                        <li><i class="fas fa-envelope"></i> 邮箱: 你的邮箱地址</li>
+                    </ul>
+                    <p><i class="fas fa-clock"></i> 工作时间: 每天9:00-24:00</p>
+                </div>
+                <div class="contact-form">
+                    <h3>发送咨询</h3>
+                    <form id="consultation-form">
+                        <div class="form-group">
+                            <label for="name">您的称呼</label>
+                            <input type="text" id="name" placeholder="请输入您的名字" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact">联系方式</label>
+                            <input type="text" id="contact" placeholder="QQ/微信/电话" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">需要的服务</label>
+                            <input type="text" id="service" placeholder="例如:每日委托、深渊螺旋" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">附加说明</label>
+                            <textarea id="message" placeholder="请描述您的具体需求"></textarea>
+                        </div>
+                        <button type="submit" class="btn">发送咨询</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub配置指南 -->
+    <section class="github-guide" id="github-guide">
+        <div class="container">
+            <div class="section-title">
+                <h2>GitHub部署指南</h2>
+                <p>如何在GitHub上配置您的网站和图片</p>
+            </div>
+            <div class="guide-steps">
+                <div class="guide-step">
+                    <h3>1. 创建GitHub仓库</h3>
+                    <p>登录GitHub，点击右上角"+"号，选择"New repository"</p>
+                    <p>仓库名称格式: username.github.io (username替换为您的GitHub用户名)</p>
+                    <p>选择公开(Public)，勾选"Add a README file"</p>
+                </div>
+                <div class="guide-step">
+                    <h3>2. 上传网站文件</h3>
+                    <p>点击"Add file" -> "Upload files"</p>
+                    <p>将您的HTML文件拖拽到上传区域(可命名为index.html)</p>
+                    <p>创建文件夹(如images)并上传您的图片资源</p>
+                </div>
+                <div class="guide-step">
+                    <h3>3. 更新图片路径</h3>
+                    <p>在HTML代码中，将图片路径更新为相对路径，例如:</p>
+                    <p>将: https://placehold.co/600x400/1e90ff/white?text=每日委托</p>
+                    <p>改为: images/daily-commission.jpg</p>
+                </div>
+                <div class="guide-step">
+                    <h3>4. 启用GitHub Pages</h3>
+                    <p>进入仓库的"Settings" -> "Pages"</p>
+                    <p>在"Branch"下选择"main"分支，文件夹选择"/root"</p>
+                    <p>点击"Save"，等待几分钟后您的网站就上线了</p>
+                </div>
+                <div class="guide-step">
+                    <h3>5. 访问您的网站</h3>
+                    <p>您的网站地址将是: https://username.github.io</p>
+                    <p>将username替换为您的GitHub用户名</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>提瓦特代肝服务</h3>
+                    <p>专业原神代肝，让您的游戏体验更轻松愉快</p>
+                </div>
+                <div class="footer-section">
+                    <h3>快速链接</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#services">服务项目</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>联系我们</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-store"></i> 咸鱼: @你的咸鱼用户名</li>
+                        <li><i class="fab fa-qq"></i> QQ: 你的QQ号</li>
+                        <li><i class="fab fa-weixin"></i> 微信: 你的微信号</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="fas fa-store"></i></a>
+                        <a href="#"><i class="fab fa-qq"></i></a>
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 提瓦特代肝服务. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的表单提交处理
+        document.getElementById('consultation-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感谢您的咨询！我们会尽快联系您。');
+            this.reset();
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 汉堡菜单
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
