@@ -2,739 +2,233 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>提瓦特代肝服务 - 专业原神代肝</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>认真代肝的往西 - 专业提瓦特管家</title>
     <style>
-        /* 基础样式 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Microsoft YaHei', sans-serif;
-        }
-        
         :root {
-            --primary: #1e90ff;
-            --secondary: #4169e1;
-            --accent: #ffae00;
-            --light: #f8f9fa;
-            --dark: #343a40;
+            --primary-blue: #4a90e2;
+            --bili-pink: #fb7299;
+            --xianyu-yellow: #ffda00;
+            --dark-gray: #2c3e50;
+            --bg-color: #f8f9fa; /* 稍微亮一点的背景色 */
         }
-        
-        body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* 导航栏样式 */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 1.5rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-        
-        /* 汉堡菜单 */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-        
-        /* 英雄区域 */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1200x600/1e90ff/white?text=原神代肝服务') no-repeat center center/cover;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-align: center;
+
+        body, html { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-color); color: var(--dark-gray); height: 100%; }
+
+        /* -------- 顶部区域升级 -------- */
+        .top-header {
             position: relative;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .btn:hover {
-            background: #ff9900;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* 服务部分 */
-        .services {
-            padding: 5rem 0;
-            background-color: white;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .service-img {
-            height: 200px;
-            background-color: #ddd;
-            background-position: center;
+            /* 使用更柔和的渐变遮罩 */
+            background: linear-gradient(to bottom, rgba(44, 62, 80, 0.4), rgba(44, 62, 80, 0.8)), url('img/header_bg.jpg');
             background-size: cover;
-        }
-        
-        .service-content {
-            padding: 1.5rem;
-        }
-        
-        .service-content h3 {
-            margin-bottom: 0.5rem;
-            color: var(--secondary);
-        }
-        
-        .price {
-            color: var(--accent);
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin: 0.5rem 0;
-        }
-        
-        /* 关于部分 */
-        .about {
-            padding: 5rem 0;
-            background-color: #f9f9f9;
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .about-img {
-            flex: 1;
-            min-width: 300px;
-            height: 400px;
-            background: url('https://placehold.co/500x600/4169e1/white?text=关于我们') no-repeat center center/cover;
-            border-radius: 10px;
-        }
-        
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        /* 评价部分 */
-        .testimonials {
-            padding: 5rem 0;
-            background-color: white;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .testimonial-card {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-        
-        .testimonial-author {
-            font-weight: bold;
-            color: var(--secondary);
-        }
-        
-        /* 联系部分 */
-        .contact {
-            padding: 5rem 0;
-            background-color: #f9f9f9;
-        }
-        
-        .contact-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-        
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-        
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        
-        /* 页脚 */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 30px;
-            height: 2px;
-            background: var(--accent);
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .social-links a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            background: #444;
-            border-radius: 50%;
+            background-position: center 30%; /*稍微调整图片对齐位置*/
             color: white;
             text-align: center;
-            line-height: 40px;
-            transition: all 0.3s ease;
+            padding: 60px 20px 40px; /* 增加上下内边距，让头部更舒展 */
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15); /* 增加底部投影 */
         }
+
+        .avatar { 
+            width: 90px; height: 90px; 
+            border-radius: 50%; 
+            border: 4px solid rgba(255,255,255,0.6); /* 更通透的边框 */
+            background: white; 
+            object-fit: cover; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
+        }
+        .top-header h1 { 
+            margin: 15px 0 8px; 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
+        }
+        .top-header p { 
+            margin: 0; 
+            font-size: 0.95rem; 
+            opacity: 0.95; 
+            letter-spacing: 1px; 
+            font-weight: 400;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3); 
+        }
+
+        /* 内容区容器 */
+        .page-container { padding: 25px 20px; padding-bottom: 140px; }
+        .page { display: none; animation: fadeIn 0.3s ease forwards; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* 模块卡片升级 */
+        .menu-card { 
+            background: white; 
+            border-radius: 20px; 
+            padding: 25px; 
+            margin-bottom: 18px; 
+            display: flex; align-items: center; justify-content: space-between; 
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06); /* 更柔和的阴影 */
+            border: none; /* 去掉边框，用阴影代替 */
+            transition: all 0.2s ease;
+        }
+        .menu-card:active { transform: scale(0.98); box-shadow: 0 4px 10px rgba(0,0,0,0.06); }
+        .menu-info h3 { margin: 0 0 5px; font-size: 1.2rem; color: var(--dark-gray); font-weight: 600; }
+        .menu-info p { margin: 0; font-size: 0.85rem; color: #999; }
+        .arrow { color: #ccc; font-size: 1.1rem; }
+
+        /* 价格列表样式 */
+        .content-block { background: white; border-radius: 18px; padding: 22px; margin-bottom: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .content-block h4 { margin: 0 0 15px 0; color: var(--primary-blue); border-left: 5px solid var(--primary-blue); padding-left: 12px; font-size: 1.15rem; }
+        .price-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f5f5f5; font-size: 0.95rem; }
+        .price-item:last-child { border-bottom: none; }
+        .price-name { color: #444; font-weight: 500; }
+        .price-val { color: #e74c3c; font-weight: bold; font-size: 1rem; }
+
+        /* 二维码展示 */
+        .qr-section { text-align: center; padding: 15px 0; }
+        .qr-image { width: 220px; height: 220px; border-radius: 12px; padding: 5px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+        .wx-id-box { display: inline-block; background: #f0f2f5; padding: 10px 24px; border-radius: 30px; font-weight: bold; margin-top: 20px; color: #333; font-family: monospace; font-size: 1.05rem; }
+
+        .back-btn { display: inline-flex; align-items: center; margin-bottom: 20px; color: var(--primary-blue); text-decoration: none; font-weight: bold; font-size: 1rem; }
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .gallery img { width: 100%; border-radius: 12px; background: #eee; min-height: 140px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
+
+        /* 底部导航栏升级 */
+        .footer-cta { 
+            position: fixed; bottom: 0; left: 0; right: 0; 
+            padding: 15px 20px 35px; 
+            background: rgba(255,255,255,0.98); 
+            backdrop-filter: blur(20px); 
+            display: flex; gap: 12px; 
+            box-shadow: 0 -5px 25px rgba(0,0,0,0.1); 
+            z-index: 1000; 
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+        }
+        .btn { flex: 1; text-align: center; padding: 14px 5px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .btn:active { transform: translateY(2px); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .btn span { font-size: 0.7rem; font-weight: normal; margin-top: 3px; opacity: 0.9; }
         
-        .social-links a:hover {
-            background: var(--accent);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #444;
-        }
-        
-        /* GitHub指南部分 */
-        .github-guide {
-            padding: 5rem 0;
-            background-color: white;
-        }
-        
-        .guide-steps {
-            margin-top: 2rem;
-        }
-        
-        .guide-step {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: var(--light);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .guide-step h3 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: linear-gradient(135deg, var(--primary), var(--secondary));
-                padding: 1rem 0;
-                text-align: center;
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .nav-links li {
-                margin: 0.5rem 0;
-            }
-            
-            .hamburger {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-        }
+        .btn-bili { background: linear-gradient(to right, #fc8bab, #fb7299); color: white; }
+        .btn-xianyu { background: linear-gradient(to right, #ffe255, #ffda00); color: #333; }
+        .btn-contact { background: linear-gradient(to right, #5da6f0, #4a90e2); color: white; }
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <img src="https://placehold.co/50x50/1e90ff/white?text=G" alt="提瓦特代肝服务">
-                    <span>提瓦特代肝服务</span>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#home">首页</a></li>
-                    <li><a href="#services">服务项目</a></li>
-                    <li><a href="#about">关于我们</a></li>
-                    <li><a href="#testimonials">客户评价</a></li>
-                    <li><a href="#contact">联系我们</a></li>
-                    <li><a href="#github-guide">GitHub指南</a></li>
-                </ul>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
+
+    <header class="top-header">
+        <img src="img/avatar.jpg" alt="往西头像" class="avatar">
+        <h1>认真代肝的往西</h1>
+        <p>rzdgdwx · 纯手工 · 担保交易</p>
     </header>
 
-    <!-- 英雄区域 -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>专业原神代肝服务</h1>
-            <p>安全高效 | 价格实惠 | 信誉第一 | 让你的提瓦特之旅更轻松</p>
-            <a href="#contact" class="btn">立即咨询</a>
-        </div>
-    </section>
+    <div class="page-container">
+        
+        <div id="home" class="page active">
+            <div class="menu-card" onclick="showPage('services')">
+                <div class="menu-info">
+                    <h3>🛠️ 代肝内容 & 详细价格表</h3>
+                    <p>日常 / 周常 / 高难挑战 / 资源采集</p>
+                </div>
+                <div class="arrow">详情 ❯</div>
+            </div>
 
-    <!-- 服务项目 -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>我们的服务</h2>
-                <p>多种代肝服务任您选择，满足您的不同需求</p>
+            <div class="menu-card" onclick="showPage('credits')">
+                <div class="menu-info">
+                    <h3>💎 信誉证明</h3>
+                    <p>B站战绩录屏 & 咸鱼五星好评</p>
+                </div>
+                <div class="arrow">查看 ❯</div>
             </div>
-            <div class="services-grid">
-                <!-- 服务项目1 -->
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('https://placehold.co/600x400/1e90ff/white?text=每日委托');"></div>
-                    <div class="service-content">
-                        <h3>每日委托</h3>
-                        <p>完成每日4个委托任务+领取奖励</p>
-                        <div class="price">¥5/天</div>
-                        <a href="#contact" class="btn">立即下单</a>
-                    </div>
-                </div>
-                
-                <!-- 服务项目2 -->
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('https://placehold.co/600x400/4169e1/white?text=深渊螺旋');"></div>
-                    <div class="service-content">
-                        <h3>深渊螺旋</h3>
-                        <p>深渊9-12层满星通关</p>
-                        <div class="price">¥20/期</div>
-                        <a href="#contact" class="btn">立即下单</a>
-                    </div>
-                </div>
-                
-                <!-- 服务项目3 -->
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('https://placehold.co/600x400/ffae00/white?text=活动任务');"></div>
-                    <div class="service-content">
-                        <h3>活动任务</h3>
-                        <p>限时活动全奖励获取</p>
-                        <div class="price">¥10-30/活动</div>
-                        <a href="#contact" class="btn">立即下单</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- 关于我们 -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>关于我们</h2>
-                <p>为什么选择我们的代肝服务</p>
-            </div>
-            <div class="about-content">
-                <div class="about-img"></div>
-                <div class="about-text">
-                    <h3>专业原神代肝团队</h3>
-                    <p>我们是一支热爱原神的专业代肝团队，拥有丰富的游戏经验和专业的服务态度。自2020年以来，我们已经为超过5000位玩家提供了优质的代肝服务。</p>
-                    <p>我们的优势：</p>
-                    <ul>
-                        <li>100%手动操作，绝对安全</li>
-                        <li>高效完成，节省您的时间</li>
-                        <li>价格实惠，多种套餐选择</li>
-                        <li>24小时客服，随时解答您的问题</li>
-                        <li>支持咸鱼担保交易，安全有保障</li>
-                    </ul>
+            <div class="menu-card" onclick="showPage('about')">
+                <div class="menu-info">
+                    <h3>👋 了解往西</h3>
+                    <p>微信号 & 二维码 & 认真服务承诺</p>
                 </div>
+                <div class="arrow">联系 ❯</div>
             </div>
         </div>
-    </section>
 
-    <!-- 客户评价 -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>客户评价</h2>
-                <p>来自真实客户的声音</p>
+        <div id="services" class="page">
+            <a href="javascript:void(0)" class="back-btn" onclick="showPage('home')">❮ 返回主页</a>
+            
+            <div class="content-block">
+                <h4>日常与周常维护</h4>
+                <div class="price-item"><span class="price-name">每日委托</span><span class="price-val">1r / 天</span></div>
+                <div class="price-item"><span class="price-name">体力清理 (180体)</span><span class="price-val">1.5r / 天</span></div>
+                <div class="price-item"><span class="price-name">周本 (3个)</span><span class="price-val">+2r / 周</span></div>
+                <div class="price-item"><span class="price-name">尘歌壶 / 城市声望</span><span class="price-val">1r / 3r 周</span></div>
             </div>
-            <div class="testimonials-grid">
-                <!-- 评价1 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        <p>"非常专业的代肝，每天准时完成日常，还会贴心截图汇报进度，强烈推荐！"</p>
-                    </div>
-                    <div class="testimonial-author">- 旅行者A</div>
-                </div>
-                
-                <!-- 评价2 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        <p>"深渊代打效率很高，一次就满星了，价格也很合理，下次还会光顾！"</p>
-                    </div>
-                    <div class="testimonial-author">- 旅行者B</div>
-                </div>
-                
-                <!-- 评价3 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        <p>"因为工作忙没时间做活动，找了这家代肝，活动奖励全部拿到了，非常满意！"</p>
-                    </div>
-                    <div class="testimonial-author">- 旅行者C</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- 联系我们 -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>联系我们</h2>
-                <p>随时为您提供优质服务</p>
+            <div class="content-block">
+                <h4>高难挑战 & 活动</h4>
+                <div class="price-item"><span class="price-name">深境螺旋 11层/12层</span><span class="price-val">6r / 9r</span></div>
+                <div class="price-item"><span class="price-name">幻想真境剧诗 (8/10/12幕)</span><span class="price-val">15/20/25r</span></div>
+                <div class="price-item"><span class="price-name">版本大活动 / 小活动</span><span class="price-val">35r / 10r</span></div>
+                <div class="price-item"><span class="price-name">七圣召唤代打/等级</span><span class="price-val">私聊定价</span></div>
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>获取代肝服务</h3>
-                    <p>请通过以下方式联系我们，我们会尽快回复您</p>
-                    <ul>
-                        <li><i class="fas fa-store"></i> 咸鱼店铺: @你的咸鱼用户名</li>
-                        <li><i class="fab fa-qq"></i> QQ: 你的QQ号</li>
-                        <li><i class="fab fa-weixin"></i> 微信: 你的微信号</li>
-                        <li><i class="fas fa-envelope"></i> 邮箱: 你的邮箱地址</li>
-                    </ul>
-                    <p><i class="fas fa-clock"></i> 工作时间: 每天9:00-24:00</p>
-                </div>
-                <div class="contact-form">
-                    <h3>发送咨询</h3>
-                    <form id="consultation-form">
-                        <div class="form-group">
-                            <label for="name">您的称呼</label>
-                            <input type="text" id="name" placeholder="请输入您的名字" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="contact">联系方式</label>
-                            <input type="text" id="contact" placeholder="QQ/微信/电话" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="service">需要的服务</label>
-                            <input type="text" id="service" placeholder="例如:每日委托、深渊螺旋" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">附加说明</label>
-                            <textarea id="message" placeholder="请描述您的具体需求"></textarea>
-                        </div>
-                        <button type="submit" class="btn">发送咨询</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- GitHub配置指南 -->
-    <section class="github-guide" id="github-guide">
-        <div class="container">
-            <div class="section-title">
-                <h2>GitHub部署指南</h2>
-                <p>如何在GitHub上配置您的网站和图片</p>
-            </div>
-            <div class="guide-steps">
-                <div class="guide-step">
-                    <h3>1. 创建GitHub仓库</h3>
-                    <p>登录GitHub，点击右上角"+"号，选择"New repository"</p>
-                    <p>仓库名称格式: username.github.io (username替换为您的GitHub用户名)</p>
-                    <p>选择公开(Public)，勾选"Add a README file"</p>
-                </div>
-                <div class="guide-step">
-                    <h3>2. 上传网站文件</h3>
-                    <p>点击"Add file" -> "Upload files"</p>
-                    <p>将您的HTML文件拖拽到上传区域(可命名为index.html)</p>
-                    <p>创建文件夹(如images)并上传您的图片资源</p>
-                </div>
-                <div class="guide-step">
-                    <h3>3. 更新图片路径</h3>
-                    <p>在HTML代码中，将图片路径更新为相对路径，例如:</p>
-                    <p>将: https://placehold.co/600x400/1e90ff/white?text=每日委托</p>
-                    <p>改为: images/daily-commission.jpg</p>
-                </div>
-                <div class="guide-step">
-                    <h3>4. 启用GitHub Pages</h3>
-                    <p>进入仓库的"Settings" -> "Pages"</p>
-                    <p>在"Branch"下选择"main"分支，文件夹选择"/root"</p>
-                    <p>点击"Save"，等待几分钟后您的网站就上线了</p>
-                </div>
-                <div class="guide-step">
-                    <h3>5. 访问您的网站</h3>
-                    <p>您的网站地址将是: https://username.github.io</p>
-                    <p>将username替换为您的GitHub用户名</p>
-                </div>
+            <div class="content-block">
+                <h4>任务与资源采集</h4>
+                <div class="price-item"><span class="price-name">传说 / 邀约任务</span><span class="price-val">15r / 个</span></div>
+                <div class="price-item"><span class="price-name">区域采集材料 (168个)</span><span class="price-val">15r~25r</span></div>
+                <div class="price-item"><span class="price-name">首领材料 (46个)</span><span class="price-val">15r</span></div>
+                <div class="price-item"><span class="price-name">矿石 100个 / 晶蝶 100只</span><span class="price-val">10r / 8r</span></div>
+                <div class="price-item"><span class="price-name">钓鱼 (指定/随机)</span><span class="price-val">0.3/0.2r 条</span></div>
+                <div class="price-item"><span class="price-name">地图探索 100%</span><span class="price-val">带进度详谈</span></div>
             </div>
         </div>
-    </section>
 
-    <!-- 页脚 -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>提瓦特代肝服务</h3>
-                    <p>专业原神代肝，让您的游戏体验更轻松愉快</p>
-                </div>
-                <div class="footer-section">
-                    <h3>快速链接</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">首页</a></li>
-                        <li><a href="#services">服务项目</a></li>
-                        <li><a href="#about">关于我们</a></li>
-                        <li><a href="#contact">联系我们</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>联系我们</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-store"></i> 咸鱼: @你的咸鱼用户名</li>
-                        <li><i class="fab fa-qq"></i> QQ: 你的QQ号</li>
-                        <li><i class="fab fa-weixin"></i> 微信: 你的微信号</li>
-                    </ul>
-                    <div class="social-links">
-                        <a href="#"><i class="fas fa-store"></i></a>
-                        <a href="#"><i class="fab fa-qq"></i></a>
-                        <a href="#"><i class="fab fa-weixin"></i></a>
-                    </div>
-                </div>
+        <div id="credits" class="page">
+            <a href="javascript:void(0)" class="back-btn" onclick="showPage('home')">❮ 返回主页</a>
+            <div class="content-block" style="background: #fff5f7; border: none;">
+                <p style="font-size: 0.9rem; color: #d63384; margin: 0;">📺 <strong>技术认证：</strong> 底部点击“B站主页”可查看七圣召唤连胜及深渊满星实录，拒绝科技，纯手工保证。</p>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 提瓦特代肝服务. 保留所有权利.</p>
+            <div class="gallery">
+                <img src="img/credit1.jpg" alt="战绩截图1">
+                <img src="img/credit2.jpg" alt="战绩截图2">
+                <img src="img/credit3.jpg" alt="好评截图1">
+                <img src="img/credit4.jpg" alt="好评截图2">
             </div>
         </div>
-    </footer>
+
+        <div id="about" class="page">
+            <a href="javascript:void(0)" class="back-btn" onclick="showPage('home')">❮ 返回主页</a>
+            <div class="content-block" style="text-align: center;">
+                <h4>微信咨询</h4>
+                <p style="font-size: 0.85rem; color: #666;">截屏保存二维码或搜索微信号</p>
+                <div class="qr-section">
+                    <img src="img/wechat_qr.jpg" alt="微信二维码" class="qr-image">
+                    <br>
+                    <div class="wx-id-box">微信号：rzdgdwx</div>
+                </div>
+            </div>
+            <div class="content-block">
+                <h4>往西的原则</h4>
+                <p style="font-size: 0.95rem; line-height: 1.7; color: #555;">我是往西。在代肝这个行业，“认真”是稀缺品。我承诺：<strong>拒绝脚本，拒绝封号风险</strong>。每一个账号我都会亲手操作，确保按时交付。</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-cta">
+        <a href="https://b23.tv/M00A0T8" class="btn btn-bili" target="_blank">
+            B站主页<span>视频战绩</span>
+        </a>
+        <a href="https://m.tb.cn/h.75akOal?tk=DVPcfBfoHjD" class="btn btn-xianyu" target="_blank">
+            咸鱼下单<span>担保交易</span>
+        </a>
+        <a href="javascript:void(0)" class="btn btn-contact" onclick="showPage('about')">
+            私聊咨询<span>添加微信</span>
+        </a>
+    </div>
 
     <script>
-        // 简单的表单提交处理
-        document.getElementById('consultation-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('感谢您的咨询！我们会尽快联系您。');
-            this.reset();
-        });
-        
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // 汉堡菜单
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
+        function showPage(pId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
     </script>
 </body>
 </html>
