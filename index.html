@@ -9,6 +9,7 @@
         :root {
             --wechat-green: #07c160;
             --bili-pink: #fb7299;
+            --huya-orange: #ff8200; /* 虎牙品牌橙 */
             --xianyu-gold: #f39c12;
             --primary-blue: #4a90e2;
             --text-main: #2c3e50;
@@ -17,7 +18,7 @@
 
         body, html { margin: 0; padding: 0; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background-color: var(--bg-body); color: var(--text-main); -webkit-font-smoothing: antialiased; }
 
-        /* --- 沉浸式顶部 Banner --- */
+        /* --- 顶部 Banner --- */
         .header-banner {
             width: 100%; height: 260px;
             background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.35)), url('img/header_bg.jpg') center 30% no-repeat;
@@ -42,7 +43,8 @@
         .avatar { width: 100%; height: 100%; object-fit: cover; }
 
         /* --- 模块卡片列表 --- */
-        .page-container { padding: 10px 18px 140px; }
+        /* 【核心调整】：底部 Padding 保持 95px，完美消除红框空白区 */
+        .page-container { padding: 10px 18px 95px; }
         .page { display: none; animation: slideUp 0.4s ease-out forwards; }
         .page.active { display: block; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -51,6 +53,7 @@
             background: white; border-radius: 20px; padding: 20px; margin-bottom: 12px;
             display: flex; align-items: center; box-shadow: 0 8px 24px rgba(149, 157, 165, 0.1);
             transition: all 0.25s ease; border: 1px solid rgba(0,0,0,0.02);
+            cursor: pointer;
         }
         .menu-item:active { transform: scale(0.97); background: #fcfcfc; }
 
@@ -86,26 +89,41 @@
         .gallery-img-box img { width: 100%; height: 100%; object-fit: contain; }
         .gallery-cap { font-size: 0.75rem; color: #888; margin-top: 8px; font-weight: 500; }
 
-        /* --- 图片放大 Modal --- */
-        .modal { display: none; position: fixed; z-index: 2000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); }
-        .modal-content { margin: auto; display: block; width: 90%; max-width: 800px; max-height: 85vh; object-fit: contain; animation: zoom 0.3s; }
-        @keyframes zoom { from {transform:scale(0)} to {transform:scale(1)} }
-        .close { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; }
+        /* --- 弹窗 Modal 通用样式 --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px); }
+        .modal-body { margin: 150px auto; width: 85%; max-width: 400px; }
+        .modal-content-card { background: white; border-radius: 25px; padding: 25px; text-align: center; position: relative; animation: zoom 0.3s; }
+        @keyframes zoom { from {transform:scale(0.8); opacity:0;} to {transform:scale(1); opacity:1;} }
+        .close-icon { position: absolute; top: 15px; right: 20px; color: #ccc; font-size: 24px; cursor: pointer; }
 
-        /* --- 底部固定导航栏 --- */
+        /* --- 直播选择按钮 --- */
+        .live-option-btn {
+            display: flex; align-items: center; justify-content: center;
+            padding: 16px; border-radius: 15px; margin: 12px 0;
+            text-decoration: none; font-weight: 800; font-size: 1rem; color: white;
+            transition: transform 0.2s;
+        }
+        .live-option-btn:active { transform: scale(0.95); }
+        .live-option-btn i { margin-right: 10px; font-size: 1.4rem; }
+        .btn-bili-live { background: var(--bili-pink); box-shadow: 0 5px 15px rgba(251, 114, 153, 0.3); }
+        .btn-huya-live { background: var(--huya-orange); box-shadow: 0 5px 15px rgba(255, 130, 0, 0.3); }
+
+        /* --- 底部固定导航 (紧凑型) --- */
         .footer-nav {
-            position: fixed; bottom: 0; left: 0; right: 0; padding: 12px 18px 35px;
+            position: fixed; bottom: 0; left: 0; right: 0;
+            padding: 10px 15px 25px;
             background: rgba(255,255,255,0.95); backdrop-filter: blur(25px);
-            display: flex; gap: 12px; z-index: 1000; box-shadow: 0 -5px 25px rgba(0,0,0,0.05);
-            border-radius: 30px 30px 0 0;
+            display: flex; gap: 10px;
+            z-index: 1000; box-shadow: 0 -5px 25px rgba(0,0,0,0.05);
+            border-radius: 25px 25px 0 0;
         }
         .nav-btn {
-            flex: 1; text-align: center; padding: 14px 5px; border-radius: 20px;
+            flex: 1; text-align: center; padding: 8px 5px; border-radius: 16px;
             text-decoration: none; font-weight: bold; font-size: 0.85rem;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            color: white; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            color: white; box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
-        .nav-btn i { font-size: 1.3rem; margin-bottom: 5px; }
+        .nav-btn i { font-size: 1.25rem; margin-bottom: 2px; }
         .nav-btn span { font-size: 0.68rem; font-weight: normal; opacity: 0.95; }
         
         .nav-bili { background: var(--bili-pink); }
@@ -113,7 +131,7 @@
         .nav-wx { background: var(--wechat-green); }
 
         .back-link { display: inline-flex; align-items: center; margin-bottom: 25px; color: var(--primary-blue); font-weight: 700; text-decoration: none; font-size: 1rem; }
-        .qr-img { width: 230px; height: 230px; border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: block; margin: 0 auto; }
+        .qr-img { width: 230px; height: 230px; border-radius: 18px; display: block; margin: 0 auto; }
         .wx-pill { display: inline-block; background: #f0f9f4; color: var(--wechat-green); padding: 10px 35px; border-radius: 35px; border: 1.5px solid var(--wechat-green); margin-top: 20px; font-weight: 800; font-size: 1.1rem; }
         .disclaimer { font-size: 0.72rem; color: #bbb; text-align: center; padding: 30px 20px; line-height: 1.7; }
     </style>
@@ -137,7 +155,7 @@
         <div id="home" class="page active">
             <div class="menu-item" onclick="showPage('services')">
                 <div class="menu-icon-box" style="color: #2196f3;"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                <div class="menu-text"><h3>代肝业务</h3><p>日常托管 / 高难代打 / 资源采集</p></div>
+                <div class="menu-text"><h3>代肝业务</h3><p>可查看具体代肝详细价格表>ke></div>
                 <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
             </div>
 
@@ -153,42 +171,32 @@
                 <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
             </div>
 
-            <div class="menu-item" onclick="showPage('about')">
-                <div class="menu-icon-box" style="color: #9c27b0;"><i class="fa-solid fa-id-badge"></i></div>
-                <div class="menu-text"><h3>了解往西</h3><p>联系方式 & 二维码 & 服务承诺</p></div>
+            <div class="menu-item" onclick="openLiveModal()">
+                <div class="menu-icon-box" style="color: #ff5722;"><i class="fa-solid fa-video"></i></div>
+                <div class="menu-text"><h3>观看直播</h3><p>B站虎牙双渠道实时过程监督</p></div>
                 <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
             </div>
 
             <div class="disclaimer">
                 <strong>版权免责声明：</strong><br>
-                本站为个人服务展示，素材版权归米哈游所有。本站与官方无授权关系，承诺所有业务承接均纯手工完成。
+                本站为个人服务展示，素材版权归米哈游所有。本站与官方无授权关系，承诺所承接业务均纯手工完成。
             </div>
         </div>
 
         <div id="services" class="page">
             <a href="javascript:void(0)" class="back-link" onclick="showPage('home')"><i class="fa-solid fa-arrow-left"></i> &nbsp;返回主页</a>
-            
             <div class="content-card">
                 <h4>日常/周常维护</h4>
                 <div class="price-row"><span>每日委托 / 天</span><span class="price-val">1r</span></div>
                 <div class="price-row"><span>体力清理 (180体/次)</span><span class="price-val">1.5r</span></div>
                 <div class="price-row"><span>周本 (3个)</span><span class="price-val">+2r / 周</span></div>
-                <div class="price-row"><span>尘歌壶洞天 / 城市声望</span><span class="price-val">1r / 3r 周</span></div>
+                <div class="price-row"><span>城市声望 / 尘歌壶</span><span class="price-val">3r / 1r 周</span></div>
             </div>
-
             <div class="content-card">
                 <h4>挑战 & 任务</h4>
                 <div class="price-row"><span>深境螺旋 11/12层</span><span class="price-val">6r / 9r</span></div>
                 <div class="price-row"><span>幻想真境剧诗 (8/10/12幕)</span><span class="price-val">15/20/25r</span></div>
-                <div class="price-row"><span>版本大活动 / 小活动</span><span class="price-val">35r / 10r</span></div>
-            </div>
-
-            <div class="content-card">
-                <h4>资源 & 采集</h4>
-                <div class="price-row"><span>首领材料 (46个)</span><span class="price-val">15r</span></div>
-                <div class="price-row"><span>区域特产 (168个)</span><span class="price-val">15r起 / 25r(高难)</span></div>
-                <div class="price-row"><span>矿石 / 晶蝶 (100个)</span><span class="price-val">10r / 8r</span></div>
-                <div class="price-row"><span>钓鱼 (指定 / 随机)</span><span class="price-val">0.3 / 0.2r 条</span></div>
+                <div class="price-row"><span>版本活动 (大/小)</span><span class="price-val">35r / 10r</span></div>
             </div>
         </div>
 
@@ -210,85 +218,98 @@
         <div id="credits" class="page">
             <a href="javascript:void(0)" class="back-link" onclick="showPage('home')"><i class="fa-solid fa-arrow-left"></i> &nbsp;返回主页</a>
             <div class="content-card">
-                <h4 style="border-left:none; padding-left:0; text-align:center;">近期成交记录展示</h4>
-                <p style="font-size: 0.8rem; color: #999; text-align: center; margin-top:-10px; margin-bottom:20px;">(由于数量较多，此处仅随机选取部分记录展示)</p>
-                
+                <h4 style="border-left:none; padding-left:0; text-align:center; margin-bottom: 10px;">近期成交记录展示</h4>
+                <p style="font-size: 0.8rem; color: #999; text-align: center; margin-top:0px; margin-bottom:25px;">(由于数量较多，此处仅随机选取部分记录展示)</p>
                 <div class="gallery">
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openModal('img/credit1.jpg')"><img src="img/credit1.jpg" alt="1"></div>
+                        <div class="gallery-img-box" onclick="openImgModal('img/credit1.jpg')"><img src="img/credit1.jpg" alt="1"></div>
                         <div class="gallery-cap">客户五星好评</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openModal('img/credit2.jpg')"><img src="img/credit2.jpg" alt="2"></div>
+                        <div class="gallery-img-box" onclick="openImgModal('img/credit2.jpg')"><img src="img/credit2.jpg" alt="2"></div>
                         <div class="gallery-cap">大额订单转账</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openModal('img/credit3.jpg')"><img src="img/credit3.jpg" alt="3"></div>
+                        <div class="gallery-img-box" onclick="openImgModal('img/credit3.jpg')"><img src="img/credit3.jpg" alt="3"></div>
                         <div class="gallery-cap">交付确认截图</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openModal('img/credit4.jpg')"><img src="img/credit4.jpg" alt="4"></div>
+                        <div class="gallery-img-box" onclick="openImgModal('img/credit4.jpg')"><img src="img/credit4.jpg" alt="4"></div>
                         <div class="gallery-cap">流程沟通确认</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openModal('img/credit5.jpg')"><img src="img/credit5.jpg" alt="5"></div>
+                        <div class="gallery-img-box" onclick="openImgModal('img/credit5.jpg')"><img src="img/credit5.jpg" alt="5"></div>
                         <div class="gallery-cap">交付结果展示</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openModal('img/credit6.jpg')"><img src="img/credit6.jpg" alt="6"></div>
+                        <div class="gallery-img-box" onclick="openImgModal('img/credit6.jpg')"><img src="img/credit6.jpg" alt="6"></div>
                         <div class="gallery-cap">长期老客续单</div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="about" class="page">
-            <a href="javascript:void(0)" class="back-link" onclick="showPage('home')"><i class="fa-solid fa-arrow-left"></i> &nbsp;返回主页</a>
-            <div class="content-card" style="text-align: center;">
-                <h4>扫码添加微信好友</h4>
-                <img src="img/wechat_qr.jpg" alt="微信二维码" class="qr-img">
+    <div class="footer-nav">
+        <a href="https://b23.tv/M00A0T8" class="nav-btn nav-bili" target="_blank"><i class="fa-brands fa-bilibili"></i>B站主页<span>视频回放</span></a>
+        <a href="https://m.tb.cn/h.75akOal?tk=DVPcfBfoHjD" class="nav-btn nav-xianyu" target="_blank"><i class="fa-solid fa-fish"></i>咸鱼下单<span>担保交易</span></a>
+        <a href="javascript:void(0)" class="nav-btn nav-wx" onclick="showAboutModal()"><i class="fa-brands fa-weixin"></i>私聊咨询<span>添加好友</span></a>
+    </div>
+
+    <div id="liveModal" class="modal" onclick="closeLiveModal()">
+        <div class="modal-body" onclick="event.stopPropagation()">
+            <div class="modal-content-card">
+                <span class="close-icon" onclick="closeLiveModal()">&times;</span>
+                <h4 style="margin-bottom: 20px; color: var(--text-main);">选择观看平台</h4>
+                <a href="https://b23.tv/FYJsrG3" target="_blank" class="live-option-btn btn-bili-live">
+                    <i class="fa-brands fa-bilibili"></i> 前往 Bilibili 直播
+                </a>
+                <a href="https://hy.fan/CT5NOdK" target="_blank" class="live-option-btn btn-huya-live">
+                    <i class="fa-solid fa-play-circle"></i> 前往 虎牙直播
+                </a>
+                <p style="font-size:0.75rem; color:#999; margin-top:15px;">实时监督 · 纯手工过程</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="aboutModal" class="modal" onclick="showAboutModal(false)">
+        <div class="modal-body" onclick="event.stopPropagation()">
+            <div class="modal-content-card">
+                <span class="close-icon" onclick="showAboutModal(false)">&times;</span>
+                <h4 style="margin-bottom:15px;">扫码添加微信好友</h4>
+                <img src="img/wechat_qr.jpg" alt="二维码" class="qr-img">
                 <div class="wx-pill">rzdgdwx</div>
             </div>
         </div>
     </div>
 
-    <div class="footer-nav">
-        <a href="https://b23.tv/M00A0T8" class="nav-btn nav-bili" target="_blank">
-            <i class="fa-brands fa-bilibili"></i>
-            B站主页<span>视频战绩</span>
-        </a>
-        <a href="https://m.tb.cn/h.75akOal?tk=DVPcfBfoHjD" class="nav-btn nav-xianyu" target="_blank">
-            <i class="fa-solid fa-fish"></i>
-            咸鱼下单<span>担保交易</span>
-        </a>
-        <a href="javascript:void(0)" class="nav-btn nav-wx" onclick="showPage('about')">
-            <i class="fa-brands fa-weixin"></i>
-            私聊咨询<span>添加好友</span>
-        </a>
-    </div>
-
-    <div id="myModal" class="modal" onclick="closeModal()">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="img01">
+    <div id="imgModal" class="modal" onclick="closeImgModal()">
+        <span class="close-icon" style="position:fixed; top:20px; right:35px; font-size:40px;">&times;</span>
+        <img class="modal-content-card" id="imgDisplay" style="margin: 50px auto; width: 90%; max-height: 80vh; object-fit: contain;">
     </div>
 
     <script>
-        // 页面切换脚本
         function showPage(pId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pId).classList.add('active');
             window.scrollTo(0, 0);
         }
-        // 灯箱逻辑
-        function openModal(imgSrc) {
-            var modal = document.getElementById("myModal");
-            var modalImg = document.getElementById("img01");
+
+        // 直播弹窗逻辑
+        function openLiveModal() { document.getElementById("liveModal").style.display = "block"; }
+        function closeLiveModal() { document.getElementById("liveModal").style.display = "none"; }
+
+        // 微信弹窗逻辑
+        function showAboutModal(show) { document.getElementById("aboutModal").style.display = show ? "block" : "none"; }
+
+        // 图片灯箱逻辑
+        function openImgModal(imgSrc) {
+            var modal = document.getElementById("imgModal");
+            var modalImg = document.getElementById("imgDisplay");
             modal.style.display = "block";
             modalImg.src = imgSrc;
         }
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-        }
+        function closeImgModal() { document.getElementById("imgModal").style.display = "none"; }
     </script>
 </body>
 </html>
