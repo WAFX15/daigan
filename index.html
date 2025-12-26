@@ -31,7 +31,7 @@
             background: var(--bg-body); border-radius: 40px 40px 0 0;
         }
 
-        /* --- 右下角个人信息 (精致小巧版) --- */
+        /* --- 个人信息浮窗 --- */
         .profile-container {
             position: absolute; bottom: 50px; right: 22px;
             display: flex; align-items: center; text-align: right; z-index: 10;
@@ -42,8 +42,7 @@
         .avatar-box { width: 70px; height: 70px; border-radius: 50%; border: 2.5px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.25); background: white; overflow: hidden; }
         .avatar { width: 100%; height: 100%; object-fit: cover; }
 
-        /* --- 模块卡片列表 --- */
-        /* 【核心修改】：Padding 设为 95px 消除红框空白区域 */
+        /* --- 容器布局 --- */
         .page-container { padding: 10px 18px 95px; }
         .page { display: none; animation: slideUp 0.4s ease-out forwards; }
         .page.active { display: block; }
@@ -53,7 +52,7 @@
             background: white; border-radius: 20px; padding: 20px; margin-bottom: 12px;
             display: flex; align-items: center; box-shadow: 0 8px 24px rgba(149, 157, 165, 0.1);
             transition: all 0.25s ease; border: 1px solid rgba(0,0,0,0.02);
-            cursor: pointer;
+            cursor: pointer; text-decoration: none; color: inherit;
         }
         .menu-item:active { transform: scale(0.97); background: #fcfcfc; }
 
@@ -67,20 +66,21 @@
         .menu-text p { margin: 4px 0 0; font-size: 0.82rem; color: #a0a0a0; }
         .arrow { color: #e0e0e0; font-size: 0.85rem; padding-left: 10px; }
 
-        /* --- 详情页价格卡片 --- */
+        /* --- 详情页样式优化 --- */
         .content-card { background: white; border-radius: 22px; padding: 24px; margin-bottom: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
         .content-card h4 { margin: 0 0 18px; color: var(--primary-blue); font-size: 1.15rem; border-left: 5px solid var(--primary-blue); padding-left: 14px; }
-        .price-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f8f8f8; font-size: 0.95rem; }
-        .price-row:last-child { border-bottom: none; }
+        
+        .price-item { margin-bottom: 15px; } /* 修正备注行的垂直间距 */
+        .price-row { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 0.95rem; }
         .price-label { color: #555; }
         .price-val { color: #e74c3c; font-weight: 700; }
-        .price-note { font-size: 0.75rem; color: #999; margin-top: 4px; line-height: 1.4; }
+        .price-note { font-size: 0.75rem; color: #999; margin-top: 2px; line-height: 1.4; }
 
-        /* --- 进度跟踪按钮 --- */
+        /* --- 按钮与提示 --- */
         .track-btn { display: block; background: var(--wechat-green); color: white; text-align: center; padding: 18px; border-radius: 18px; text-decoration: none; font-weight: bold; margin: 20px 0; font-size: 1rem; box-shadow: 0 8px 25px rgba(7, 193, 96, 0.2); }
         .notice-info { background: #f0f9f4; color: #2e7d32; padding: 18px; border-radius: 16px; font-size: 0.88rem; line-height: 1.7; border: 1px solid rgba(46, 125, 50, 0.08); }
 
-        /* --- 信誉图网格 --- */
+        /* --- 信誉展示网格 --- */
         .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
         .gallery-item { text-align: center; }
         .gallery-img-box {
@@ -91,19 +91,18 @@
         .gallery-img-box img { width: 100%; height: 100%; object-fit: contain; }
         .gallery-cap { font-size: 0.75rem; color: #888; margin-top: 8px; font-weight: 500; }
 
-        /* --- 弹窗 Modal --- */
+        /* --- 弹窗组件通用 --- */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px); }
         .modal-body { margin: 150px auto; width: 85%; max-width: 400px; }
         .modal-content-card { background: white; border-radius: 25px; padding: 25px; text-align: center; position: relative; animation: zoom 0.3s; }
         @keyframes zoom { from {transform:scale(0.8); opacity:0;} to {transform:scale(1); opacity:1;} }
         .close-icon { position: absolute; top: 15px; right: 20px; color: #ccc; font-size: 24px; cursor: pointer; }
 
-        /* 直播选择按钮 */
         .live-option-btn { display: flex; align-items: center; justify-content: center; padding: 16px; border-radius: 15px; margin: 12px 0; text-decoration: none; font-weight: 800; font-size: 1rem; color: white; }
         .btn-bili-live { background: var(--bili-pink); box-shadow: 0 5px 15px rgba(251, 114, 153, 0.3); }
         .btn-huya-live { background: var(--huya-orange); box-shadow: 0 5px 15px rgba(255, 130, 0, 0.3); }
 
-        /* --- 底部导航栏 (紧凑优化版) --- */
+        /* --- 底部导航 --- */
         .footer-nav {
             position: fixed; bottom: 0; left: 0; right: 0; padding: 10px 15px 25px;
             background: rgba(255,255,255,0.95); backdrop-filter: blur(25px);
@@ -167,7 +166,7 @@
 
             <div class="disclaimer">
                 <strong>版权免责声明：</strong><br>
-                      本站为个人服务展示，素材版权归米哈游所有。
+                本站为个人服务展示，素材版权归米哈游所有。<br>
                 本站与官方无授权关系，承诺所承接代肝均以纯手工形式完成。
             </div>
         </div>
@@ -177,47 +176,40 @@
             
             <div class="content-card">
                 <h4>日常/周常托管</h4>
-                <div class="price-row">
-                    <div class="price-label">每日委托</div>
-                    <div class="price-val">1r / 天</div>
+                <div class="price-item">
+                    <div class="price-row"><div class="price-label">每日委托</div><div class="price-val">1r / 天</div></div>
+                    <div class="price-note">备注：有历练点且下单清体的情况下仅0.5r/天</div>
                 </div>
-                <div class="price-note">备注：有历练点且下单清体的情况下仅0.5r/天</div>
 
-                <div class="price-row">
-                    <div class="price-label">每日体力 (180体)</div>
-                    <div class="price-val">1.5r / 次</div>
+                <div class="price-item">
+                    <div class="price-row"><div class="price-label">每日体力 (180体)</div><div class="price-val">1.5r / 次</div></div>
+                    <div class="price-note">备注：默认打最新圣遗物本，双倍活动需补5r，加1r可上号两次确保不溢出</div>
                 </div>
-                <div class="price-note">备注：默认打最新圣遗物本，双倍活动需补5r，加1r可每日上号两次确保不溢出</div>
 
-                <div class="price-row">
-                    <div class="price-label">每周周本 (指定3个)</div>
-                    <div class="price-val">2r / 周</div>
+                <div class="price-item">
+                    <div class="price-row"><div class="price-label">每周周本 (指定3个)</div><div class="price-val">2r / 周</div></div>
+                    <div class="price-note">备注：下单体力的基础下加2r，无下单基础直接指定完成6r</div>
                 </div>
-                <div class="price-note">备注：下单体力的基础下加2r，无下单基础直接指定完成6r</div>
 
-                <div class="price-row">
-                    <div class="price-label">每周尘歌壶币与好感</div>
-                    <div class="price-val">1r / 周</div>
+                <div class="price-item">
+                    <div class="price-row"><div class="price-label">每周尘歌壶币与好感</div><div class="price-val">1r / 周</div></div>
+                    <div class="price-note">备注：包含兑换经验书、限时树脂并帮忙使用掉</div>
                 </div>
-                <div class="price-note">备注：包含兑换经验书、限时树脂并帮忙使用掉</div>
 
-              <div class="price-item">
-    <div class="price-row">
-        <div class="price-label">每周城市声望或任务</div>
-        <div class="price-val">3r / 周</div>
-    </div>
-    <div class="price-note">备注：包含怪物击杀与材料交于或挪德卡莱的任务</div>
-</div>
+                <div class="price-item">
+                    <div class="price-row"><div class="price-label">每周城市声望或任务</div><div class="price-val">3r / 周</div></div>
+                    <div class="price-note">备注：包含怪物击杀与材料交于或挪德卡莱的任务</div>
+                </div>
             </div>
 
             <div class="content-card">
                 <h4>挑战与活动</h4>
+                 <div class="price-row"><span>常规小活动</span><span class="price-val">10-15r / 个</span></div>
                 <div class="price-row"><span>版本大活动</span><span class="price-val">35r / 个</span></div>
                 <div class="price-row"><span>大活动内小活动</span><span class="price-val">10r / 个</span></div>
-                <div class="price-row"><span>常规小活动</span><span class="price-val">10-15r / 个</span></div>
-                <div class="price-row"><span>深境螺旋 11层 / 12层</span><span class="price-val">6r / 9r</span></div>
-                <div class="price-row"><span>幻想真境剧诗 (8/10/12幕)</span><span class="price-val">15 / 20 / 25r</span></div>
-                <div class="price-row"><span>幽静危战 (难度3 / 难度4)</span><span class="price-val">6r / 9r</span></div>
+                <div class="price-row"><span>深境螺旋 (11层/12层)</span><span class="price-val">6r / 9r</span></div>
+                <div class="price-row"><span>幻想真境剧诗 (8幕/10幕/12幕)</span><span class="price-val">15r / 20r / 25r</span></div>
+                <div class="price-row"><span>幽静危战 (难度3/难度4)</span><span class="price-val">6r / 9r</span></div>
                 <div class="price-row"><span>幻想游迹 (角色拖尾)</span><span class="price-val">3-5r / 个</span></div>
                 <div class="price-row"><span>且试身手</span><span class="price-val">1r / 个</span></div>
             </div>
@@ -236,11 +228,11 @@
             <div class="content-card" style="border: 1px solid #e8f5e9;">
                 <h4 style="color: var(--wechat-green); border-left-color: var(--wechat-green);">往西服务承诺</h4>
                 <div class="price-note" style="color: #333; font-size: 0.85rem;">
-                    • <b>漏做赔付</b>：漏做少做返款的同时双倍赔付，专业负责，使命必达。<br>
+                    • <b>漏做赔付</b>：漏做少做返款的同时双倍赔付，专业负责。<br>
                     • <b>实时互动</b>：首次托管会返图；大部分重要内容均截图上传。<br>
-                    • <b>福利代领</b>：托管期间帮兑换前瞻码，每个卡池上线帮领邮件防止过期。<br>
-                    • <b>透明监管</b>：委托以联机形式完成，可随时通过原石/体力变化核实。<br>
-                    • <b>公平结算</b>：老板做完的内容可退款（上号前说明，无说明按照上号一次1r收费）。
+                    • <b>福利代领</b>：托管期间帮兑换前瞻码，每个卡池上线帮领邮件。<br>
+                    • <b>透明监管</b>：委托以联机形式完成，可随时通过数据变化核实。<br>
+                    • <b>公平结算</b>：老板做完的内容可退款（上号前说明，无说明上号每次1r）。
                 </div>
             </div>
         </div>
@@ -255,7 +247,7 @@
                 </a>
                 <div class="notice-info">
                     <strong>📢 温馨提示：</strong><br>
-                    建议使用<strong>企业微信</strong>查看。仅企业微信端支持订单完成时的实时推送通知；<strong>普通微信用户仅支持主动查询或者关注企业微信服务号接受统一广播通知。</strong>
+                    建议使用<strong>企业微信</strong>查看。仅企业微信端支持订单完成时的实时推送通知；<strong>普通微信用户仅支持主动查询或者关注服务号接受广播通知。</strong>
                 </div>
             </div>
         </div>
@@ -264,30 +256,30 @@
             <a href="javascript:void(0)" class="back-link" onclick="showPage('home')"><i class="fa-solid fa-arrow-left"></i> &nbsp;返回主页</a>
             <div class="content-card">
                 <h4 style="border-left:none; padding-left:0; text-align:center; margin-bottom: 10px;">近期成交记录展示</h4>
-                <p style="font-size: 0.8rem; color: #999; text-align: center; margin-top:0px; margin-bottom:25px;">(由于数量较多，此处仅随机选取部分记录展示)</p>
+                <p style="font-size: 0.8rem; color: #999; text-align: center; margin-top:0px; margin-bottom:25px;">(此处仅随机选取部分记录展示)</p>
                 <div class="gallery">
                     <div class="gallery-item">
                         <div class="gallery-img-box" onclick="openImgModal('img/credit1.jpg')"><img src="img/credit1.jpg" alt="1"></div>
                         <div class="gallery-cap">客户五星好评</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openModal('img/credit2.jpg')"><img src="img/credit2.jpg" alt="2"></div>
+                        <div class="gallery-img-box" onclick="openImgModal('img/credit2.jpg')"><img src="img/credit2.jpg" alt="2"></div>
                         <div class="gallery-cap">大额订单转账</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openModal('img/credit3.jpg')"><img src="img/credit3.jpg" alt="3"></div>
+                        <div class="gallery-img-box" onclick="openImgModal('img/credit3.jpg')"><img src="img/credit3.jpg" alt="3"></div>
                         <div class="gallery-cap">交付确认截图</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openModal('img/credit4.jpg')"><img src="img/credit4.jpg" alt="4"></div>
+                        <div class="gallery-img-box" onclick="openImgModal('img/credit4.jpg')"><img src="img/credit4.jpg" alt="4"></div>
                         <div class="gallery-cap">流程沟通确认</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openModal('img/credit5.jpg')"><img src="img/credit5.jpg" alt="5"></div>
+                        <div class="gallery-img-box" onclick="openImgModal('img/credit5.jpg')"><img src="img/credit5.jpg" alt="5"></div>
                         <div class="gallery-cap">交付结果展示</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openModal('img/credit6.jpg')"><img src="img/credit6.jpg" alt="6"></div>
+                        <div class="gallery-img-box" onclick="openImgModal('img/credit6.jpg')"><img src="img/credit6.jpg" alt="6"></div>
                         <div class="gallery-cap">长期老客续单</div>
                     </div>
                 </div>
@@ -298,7 +290,7 @@
     <div class="footer-nav">
         <a href="https://b23.tv/M00A0T8" class="nav-btn nav-bili" target="_blank"><i class="fa-brands fa-bilibili"></i>B站主页<span>视频回放</span></a>
         <a href="https://m.tb.cn/h.75akOal?tk=DVPcfBfoHjD" class="nav-btn nav-xianyu" target="_blank"><i class="fa-solid fa-fish"></i>咸鱼下单<span>担保交易</span></a>
-        <a href="javascript:void(0)" class="nav-btn nav-wx" onclick="showAboutModal()"><i class="fa-brands fa-weixin"></i>私聊咨询<span>添加好友</span></a>
+        <a href="javascript:void(0)" class="nav-btn nav-wx" onclick="showAboutModal(true)"><i class="fa-brands fa-weixin"></i>私聊咨询<span>添加好友</span></a>
     </div>
 
     <div id="liveModal" class="modal" onclick="closeLiveModal()">
@@ -334,14 +326,23 @@
     </div>
 
     <script>
+        // 页面切换
         function showPage(pId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pId).classList.add('active');
             window.scrollTo(0, 0);
         }
+
+        // 直播弹窗
         function openLiveModal() { document.getElementById("liveModal").style.display = "block"; }
         function closeLiveModal() { document.getElementById("liveModal").style.display = "none"; }
-        function showAboutModal(show) { document.getElementById("aboutModal").style.display = show ? "block" : "none"; }
+
+        // 关于/微信弹窗 (修正逻辑)
+        function showAboutModal(show) { 
+            document.getElementById("aboutModal").style.display = show ? "block" : "none"; 
+        }
+
+        // 图片预览弹窗 (统一函数名)
         function openImgModal(imgSrc) {
             var modal = document.getElementById("imgModal");
             var modalImg = document.getElementById("imgDisplay");
