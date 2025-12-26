@@ -4,230 +4,291 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>认真代肝的往西 - 专业提瓦特管家</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-blue: #4a90e2;
+            --wechat-green: #07c160;
             --bili-pink: #fb7299;
-            --xianyu-yellow: #ffda00;
-            --dark-gray: #2c3e50;
-            --bg-color: #f8f9fa; /* 稍微亮一点的背景色 */
+            --xianyu-gold: #f39c12;
+            --primary-blue: #4a90e2;
+            --text-main: #2c3e50;
+            --bg-body: #f7f9fc;
         }
 
-        body, html { margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg-color); color: var(--dark-gray); height: 100%; }
+        body, html { margin: 0; padding: 0; font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background-color: var(--bg-body); color: var(--text-main); -webkit-font-smoothing: antialiased; }
 
-        /* -------- 顶部区域升级 -------- */
-        .top-header {
-            position: relative;
-            /* 使用更柔和的渐变遮罩 */
-            background: linear-gradient(to bottom, rgba(44, 62, 80, 0.4), rgba(44, 62, 80, 0.8)), url('img/header_bg.jpg');
+        /* --- 顶部 Banner --- */
+        .header-banner {
+            width: 100%; height: 260px;
+            background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.35)), url('img/header_bg.jpg') center 30% no-repeat;
             background-size: cover;
-            background-position: center 30%; /*稍微调整图片对齐位置*/
-            color: white;
-            text-align: center;
-            padding: 60px 20px 40px; /* 增加上下内边距，让头部更舒展 */
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15); /* 增加底部投影 */
+            position: relative;
         }
 
-        .avatar { 
-            width: 90px; height: 90px; 
-            border-radius: 50%; 
-            border: 4px solid rgba(255,255,255,0.6); /* 更通透的边框 */
-            background: white; 
-            object-fit: cover; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2); 
-        }
-        .top-header h1 { 
-            margin: 15px 0 8px; 
-            font-size: 1.5rem; 
-            font-weight: 700; 
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3); 
-        }
-        .top-header p { 
-            margin: 0; 
-            font-size: 0.95rem; 
-            opacity: 0.95; 
-            letter-spacing: 1px; 
-            font-weight: 400;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3); 
+        /* 弧形底边设计 --- */
+        .header-banner::after {
+            content: ''; position: absolute; bottom: -1px; left: 0; width: 100%; height: 35px;
+            background: var(--bg-body); border-radius: 40px 40px 0 0;
         }
 
-        /* 内容区容器 */
-        .page-container { padding: 25px 20px; padding-bottom: 140px; }
-        .page { display: none; animation: fadeIn 0.3s ease forwards; }
+        /* --- 右下角个人信息 (精致小巧版) --- */
+        .profile-container {
+            position: absolute; bottom: 50px; right: 22px;
+            display: flex; align-items: center; text-align: right; z-index: 10;
+        }
+        .profile-text { margin-right: 12px; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+        .profile-text h1 { margin: 0; font-size: 1.25rem; font-weight: 900; letter-spacing: 0.5px; }
+        .profile-text .subtitle { margin-top: 3px; font-size: 0.75rem; opacity: 0.95; }
+        .avatar-box { width: 70px; height: 70px; border-radius: 50%; border: 2.5px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.25); background: white; overflow: hidden; }
+        .avatar { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- 模块卡片列表 --- */
+        .page-container { padding: 10px 18px 140px; }
+        .page { display: none; animation: slideUp 0.4s ease-out forwards; }
         .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* 模块卡片升级 */
-        .menu-card { 
-            background: white; 
-            border-radius: 20px; 
-            padding: 25px; 
-            margin-bottom: 18px; 
-            display: flex; align-items: center; justify-content: space-between; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06); /* 更柔和的阴影 */
-            border: none; /* 去掉边框，用阴影代替 */
-            transition: all 0.2s ease;
+        .menu-item {
+            background: white; border-radius: 20px; padding: 20px; margin-bottom: 12px;
+            display: flex; align-items: center; box-shadow: 0 8px 24px rgba(149, 157, 165, 0.1);
+            transition: all 0.25s ease; border: 1px solid rgba(0,0,0,0.02);
         }
-        .menu-card:active { transform: scale(0.98); box-shadow: 0 4px 10px rgba(0,0,0,0.06); }
-        .menu-info h3 { margin: 0 0 5px; font-size: 1.2rem; color: var(--dark-gray); font-weight: 600; }
-        .menu-info p { margin: 0; font-size: 0.85rem; color: #999; }
-        .arrow { color: #ccc; font-size: 1.1rem; }
+        .menu-item:active { transform: scale(0.97); background: #fcfcfc; }
 
-        /* 价格列表样式 */
-        .content-block { background: white; border-radius: 18px; padding: 22px; margin-bottom: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .content-block h4 { margin: 0 0 15px 0; color: var(--primary-blue); border-left: 5px solid var(--primary-blue); padding-left: 12px; font-size: 1.15rem; }
-        .price-item { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f5f5f5; font-size: 0.95rem; }
-        .price-item:last-child { border-bottom: none; }
-        .price-name { color: #444; font-weight: 500; }
-        .price-val { color: #e74c3c; font-weight: bold; font-size: 1rem; }
-
-        /* 二维码展示 */
-        .qr-section { text-align: center; padding: 15px 0; }
-        .qr-image { width: 220px; height: 220px; border-radius: 12px; padding: 5px; background: white; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-        .wx-id-box { display: inline-block; background: #f0f2f5; padding: 10px 24px; border-radius: 30px; font-weight: bold; margin-top: 20px; color: #333; font-family: monospace; font-size: 1.05rem; }
-
-        .back-btn { display: inline-flex; align-items: center; margin-bottom: 20px; color: var(--primary-blue); text-decoration: none; font-weight: bold; font-size: 1rem; }
-        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .gallery img { width: 100%; border-radius: 12px; background: #eee; min-height: 140px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.08); }
-
-        /* 底部导航栏升级 */
-        .footer-cta { 
-            position: fixed; bottom: 0; left: 0; right: 0; 
-            padding: 15px 20px 35px; 
-            background: rgba(255,255,255,0.98); 
-            backdrop-filter: blur(20px); 
-            display: flex; gap: 12px; 
-            box-shadow: 0 -5px 25px rgba(0,0,0,0.1); 
-            z-index: 1000; 
-            border-top-left-radius: 25px;
-            border-top-right-radius: 25px;
+        .menu-icon-box {
+            width: 50px; height: 50px; border-radius: 15px; background: #f1f3f6;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; margin-right: 18px; flex-shrink: 0;
         }
-        .btn { flex: 1; text-align: center; padding: 14px 5px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        .btn:active { transform: translateY(2px); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .btn span { font-size: 0.7rem; font-weight: normal; margin-top: 3px; opacity: 0.9; }
+        .menu-text { flex-grow: 1; }
+        .menu-text h3 { margin: 0; font-size: 1.1rem; font-weight: 700; color: #222; }
+        .menu-text p { margin: 4px 0 0; font-size: 0.82rem; color: #a0a0a0; }
+        .arrow { color: #e0e0e0; font-size: 0.85rem; padding-left: 10px; }
+
+        /* --- 详情页通用样式 --- */
+        .content-card { background: white; border-radius: 22px; padding: 24px; margin-bottom: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .content-card h4 { margin: 0 0 18px; color: var(--primary-blue); font-size: 1.15rem; border-left: 5px solid var(--primary-blue); padding-left: 14px; }
+        .price-row { display: flex; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid #f8f8f8; font-size: 0.95rem; }
+        .price-row:last-child { border-bottom: none; }
+        .price-val { color: #e74c3c; font-weight: 700; }
+
+        /* 进度跟踪按钮 */
+        .track-btn { display: block; background: var(--wechat-green); color: white; text-align: center; padding: 18px; border-radius: 18px; text-decoration: none; font-weight: bold; margin: 20px 0; font-size: 1rem; box-shadow: 0 8px 25px rgba(7, 193, 96, 0.2); }
+        .notice-info { background: #f0f9f4; color: #2e7d32; padding: 18px; border-radius: 16px; font-size: 0.88rem; line-height: 1.7; border: 1px solid rgba(46, 125, 50, 0.08); }
+
+        /* --- 信誉图网格 --- */
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
+        .gallery-item { text-align: center; }
+        .gallery-img-box {
+            background: #f5f5f5; border-radius: 14px; overflow: hidden; height: 110px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: zoom-in; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .gallery-img-box img { width: 100%; height: 100%; object-fit: contain; }
+        .gallery-cap { font-size: 0.75rem; color: #888; margin-top: 8px; font-weight: 500; }
+
+        /* --- 图片放大 Modal --- */
+        .modal { display: none; position: fixed; z-index: 2000; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); }
+        .modal-content { margin: auto; display: block; width: 90%; max-width: 800px; max-height: 85vh; object-fit: contain; animation: zoom 0.3s; }
+        @keyframes zoom { from {transform:scale(0)} to {transform:scale(1)} }
+        .close { position: absolute; top: 20px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; cursor: pointer; }
+
+        /* --- 底部固定导航栏 --- */
+        .footer-nav {
+            position: fixed; bottom: 0; left: 0; right: 0; padding: 12px 18px 35px;
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(25px);
+            display: flex; gap: 12px; z-index: 1000; box-shadow: 0 -5px 25px rgba(0,0,0,0.05);
+            border-radius: 30px 30px 0 0;
+        }
+        .nav-btn {
+            flex: 1; text-align: center; padding: 14px 5px; border-radius: 20px;
+            text-decoration: none; font-weight: bold; font-size: 0.85rem;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: white; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .nav-btn i { font-size: 1.3rem; margin-bottom: 5px; }
+        .nav-btn span { font-size: 0.68rem; font-weight: normal; opacity: 0.95; }
         
-        .btn-bili { background: linear-gradient(to right, #fc8bab, #fb7299); color: white; }
-        .btn-xianyu { background: linear-gradient(to right, #ffe255, #ffda00); color: #333; }
-        .btn-contact { background: linear-gradient(to right, #5da6f0, #4a90e2); color: white; }
+        .nav-bili { background: var(--bili-pink); }
+        .nav-xianyu { background: var(--xianyu-gold); }
+        .nav-wx { background: var(--wechat-green); }
+
+        .back-link { display: inline-flex; align-items: center; margin-bottom: 25px; color: var(--primary-blue); font-weight: 700; text-decoration: none; font-size: 1rem; }
+        .qr-img { width: 230px; height: 230px; border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); display: block; margin: 0 auto; }
+        .wx-pill { display: inline-block; background: #f0f9f4; color: var(--wechat-green); padding: 10px 35px; border-radius: 35px; border: 1.5px solid var(--wechat-green); margin-top: 20px; font-weight: 800; font-size: 1.1rem; }
+        .disclaimer { font-size: 0.72rem; color: #bbb; text-align: center; padding: 30px 20px; line-height: 1.7; }
     </style>
 </head>
 <body>
 
-    <header class="top-header">
-        <img src="img/avatar.jpg" alt="往西头像" class="avatar">
-        <h1>认真代肝的往西</h1>
-        <p>rzdgdwx · 纯手工 · 担保交易</p>
-    </header>
+    <div class="header-banner">
+        <div class="profile-container">
+            <div class="profile-text">
+                <h1>认真代肝的往西</h1>
+                <div class="subtitle">rzdgdwx · 纯手工 · 担保交易</div>
+            </div>
+            <div class="avatar-box">
+                <img src="img/avatar.jpg" alt="往西" class="avatar">
+            </div>
+        </div>
+    </div>
 
     <div class="page-container">
         
         <div id="home" class="page active">
-            <div class="menu-card" onclick="showPage('services')">
-                <div class="menu-info">
-                    <h3>🛠️ 代肝内容 & 详细价格表</h3>
-                    <p>日常 / 周常 / 高难挑战 / 资源采集</p>
-                </div>
-                <div class="arrow">详情 ❯</div>
+            <div class="menu-item" onclick="showPage('services')">
+                <div class="menu-icon-box" style="color: #2196f3;"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <div class="menu-text"><h3>代肝业务</h3><p>日常托管 / 高难代打 / 资源采集</p></div>
+                <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
             </div>
 
-            <div class="menu-card" onclick="showPage('credits')">
-                <div class="menu-info">
-                    <h3>💎 信誉证明</h3>
-                    <p>B站战绩录屏 & 咸鱼五星好评</p>
-                </div>
-                <div class="arrow">查看 ❯</div>
+            <div class="menu-item" onclick="showPage('tracking')">
+                <div class="menu-icon-box" style="color: var(--wechat-green);"><i class="fa-solid fa-compass"></i></div>
+                <div class="menu-text"><h3>进度跟踪</h3><p>已下单用户可在此跟进详情</p></div>
+                <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
             </div>
 
-            <div class="menu-card" onclick="showPage('about')">
-                <div class="menu-info">
-                    <h3>👋 了解往西</h3>
-                    <p>微信号 & 二维码 & 认真服务承诺</p>
-                </div>
-                <div class="arrow">联系 ❯</div>
+            <div class="menu-item" onclick="showPage('credits')">
+                <div class="menu-icon-box" style="color: #fbc02d;"><i class="fa-solid fa-trophy"></i></div>
+                <div class="menu-text"><h3>信誉证明</h3><p>近期真实成交记录展示</p></div>
+                <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+
+            <div class="menu-item" onclick="showPage('about')">
+                <div class="menu-icon-box" style="color: #9c27b0;"><i class="fa-solid fa-id-badge"></i></div>
+                <div class="menu-text"><h3>了解往西</h3><p>联系方式 & 二维码 & 服务承诺</p></div>
+                <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
+            </div>
+
+            <div class="disclaimer">
+                <strong>版权免责声明：</strong><br>
+                本站为个人服务展示，素材版权归米哈游所有。本站与官方无授权关系，承诺纯手工。
             </div>
         </div>
 
         <div id="services" class="page">
-            <a href="javascript:void(0)" class="back-btn" onclick="showPage('home')">❮ 返回主页</a>
+            <a href="javascript:void(0)" class="back-link" onclick="showPage('home')"><i class="fa-solid fa-arrow-left"></i> &nbsp;返回主页</a>
             
-            <div class="content-block">
-                <h4>日常与周常维护</h4>
-                <div class="price-item"><span class="price-name">每日委托</span><span class="price-val">1r / 天</span></div>
-                <div class="price-item"><span class="price-name">体力清理 (180体)</span><span class="price-val">1.5r / 天</span></div>
-                <div class="price-item"><span class="price-name">周本 (3个)</span><span class="price-val">+2r / 周</span></div>
-                <div class="price-item"><span class="price-name">尘歌壶 / 城市声望</span><span class="price-val">1r / 3r 周</span></div>
+            <div class="content-card">
+                <h4>日常/周常维护</h4>
+                <div class="price-row"><span>每日委托 / 天</span><span class="price-val">1r</span></div>
+                <div class="price-row"><span>体力清理 (180体/次)</span><span class="price-val">1.5r</span></div>
+                <div class="price-row"><span>周本 (3个)</span><span class="price-val">+2r / 周</span></div>
+                <div class="price-row"><span>尘歌壶洞天 / 城市声望</span><span class="price-val">1r / 3r 周</span></div>
             </div>
 
-            <div class="content-block">
-                <h4>高难挑战 & 活动</h4>
-                <div class="price-item"><span class="price-name">深境螺旋 11层/12层</span><span class="price-val">6r / 9r</span></div>
-                <div class="price-item"><span class="price-name">幻想真境剧诗 (8/10/12幕)</span><span class="price-val">15/20/25r</span></div>
-                <div class="price-item"><span class="price-name">版本大活动 / 小活动</span><span class="price-val">35r / 10r</span></div>
-                <div class="price-item"><span class="price-name">七圣召唤代打/等级</span><span class="price-val">私聊定价</span></div>
+            <div class="content-card">
+                <h4>挑战 & 任务</h4>
+                <div class="price-row"><span>深境螺旋 11/12层</span><span class="price-val">6r / 9r</span></div>
+                <div class="price-row"><span>幻想真境剧诗 (8/10/12幕)</span><span class="price-val">15/20/25r</span></div>
+                <div class="price-row"><span>版本大活动 / 小活动</span><span class="price-val">35r / 10r</span></div>
             </div>
 
-            <div class="content-block">
-                <h4>任务与资源采集</h4>
-                <div class="price-item"><span class="price-name">传说 / 邀约任务</span><span class="price-val">15r / 个</span></div>
-                <div class="price-item"><span class="price-name">区域采集材料 (168个)</span><span class="price-val">15r~25r</span></div>
-                <div class="price-item"><span class="price-name">首领材料 (46个)</span><span class="price-val">15r</span></div>
-                <div class="price-item"><span class="price-name">矿石 100个 / 晶蝶 100只</span><span class="price-val">10r / 8r</span></div>
-                <div class="price-item"><span class="price-name">钓鱼 (指定/随机)</span><span class="price-val">0.3/0.2r 条</span></div>
-                <div class="price-item"><span class="price-name">地图探索 100%</span><span class="price-val">带进度详谈</span></div>
+            <div class="content-card">
+                <h4>资源 & 采集</h4>
+                <div class="price-row"><span>首领材料 (46个)</span><span class="price-val">15r</span></div>
+                <div class="price-row"><span>区域特产 (168个)</span><span class="price-val">15r起 / 25r(高难)</span></div>
+                <div class="price-row"><span>矿石 / 晶蝶 (100个)</span><span class="price-val">10r / 8r</span></div>
+                <div class="price-row"><span>钓鱼 (指定 / 随机)</span><span class="price-val">0.3 / 0.2r 条</span></div>
+            </div>
+        </div>
+
+        <div id="tracking" class="page">
+            <a href="javascript:void(0)" class="back-link" onclick="showPage('home')"><i class="fa-solid fa-arrow-left"></i> &nbsp;返回主页</a>
+            <div class="content-card">
+                <h4>订单状态实时查询</h4>
+                <p style="font-size: 0.9rem; color: #666;">点击下方按钮进入订单智能表格，输入您的订单号即可实时跟进进度。</p>
+                <a href="https://wafx15.github.io/daigan/" class="track-btn" target="_blank">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i> &nbsp;立即查询订单进度
+                </a>
+                <div class="notice-info">
+                    <strong>📢 温馨提示：</strong><br>
+                    建议使用<strong>企业微信</strong>查看。仅企业微信端支持订单完成时的实时推送通知；<strong>普通微信用户仅支持主动查询或者关注企业微信服务号接受统一广播通知。</strong>
+                </div>
             </div>
         </div>
 
         <div id="credits" class="page">
-            <a href="javascript:void(0)" class="back-btn" onclick="showPage('home')">❮ 返回主页</a>
-            <div class="content-block" style="background: #fff5f7; border: none;">
-                <p style="font-size: 0.9rem; color: #d63384; margin: 0;">📺 <strong>技术认证：</strong> 底部点击“B站主页”可查看七圣召唤连胜及深渊满星实录，拒绝科技，纯手工保证。</p>
-            </div>
-            <div class="gallery">
-                <img src="img/credit1.jpg" alt="战绩截图1">
-                <img src="img/credit2.jpg" alt="战绩截图2">
-                <img src="img/credit3.jpg" alt="好评截图1">
-                <img src="img/credit4.jpg" alt="好评截图2">
+            <a href="javascript:void(0)" class="back-link" onclick="showPage('home')"><i class="fa-solid fa-arrow-left"></i> &nbsp;返回主页</a>
+            <div class="content-card">
+                <h4 style="border-left:none; padding-left:0; text-align:center;">近期成交记录展示</h4>
+                <p style="font-size: 0.8rem; color: #999; text-align: center; margin-top:-10px; margin-bottom:20px;">(由于数量较多，此处仅随机选取部分记录展示)</p>
+                
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <div class="gallery-img-box" onclick="openModal('img/credit1.jpg')"><img src="img/credit1.jpg" alt="1"></div>
+                        <div class="gallery-cap">客户五星好评</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-img-box" onclick="openModal('img/credit2.jpg')"><img src="img/credit2.jpg" alt="2"></div>
+                        <div class="gallery-cap">大额订单转账</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-img-box" onclick="openModal('img/credit3.jpg')"><img src="img/credit3.jpg" alt="3"></div>
+                        <div class="gallery-cap">交付确认截图</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-img-box" onclick="openModal('img/credit4.jpg')"><img src="img/credit4.jpg" alt="4"></div>
+                        <div class="gallery-cap">流程沟通确认</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-img-box" onclick="openModal('img/credit5.jpg')"><img src="img/credit5.jpg" alt="5"></div>
+                        <div class="gallery-cap">交付结果展示</div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-img-box" onclick="openModal('img/credit6.jpg')"><img src="img/credit6.jpg" alt="6"></div>
+                        <div class="gallery-cap">长期老客续单</div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div id="about" class="page">
-            <a href="javascript:void(0)" class="back-btn" onclick="showPage('home')">❮ 返回主页</a>
-            <div class="content-block" style="text-align: center;">
-                <h4>微信咨询</h4>
-                <p style="font-size: 0.85rem; color: #666;">截屏保存二维码或搜索微信号</p>
-                <div class="qr-section">
-                    <img src="img/wechat_qr.jpg" alt="微信二维码" class="qr-image">
-                    <br>
-                    <div class="wx-id-box">微信号：rzdgdwx</div>
-                </div>
-            </div>
-            <div class="content-block">
-                <h4>往西的原则</h4>
-                <p style="font-size: 0.95rem; line-height: 1.7; color: #555;">我是往西。在代肝这个行业，“认真”是稀缺品。我承诺：<strong>拒绝脚本，拒绝封号风险</strong>。每一个账号我都会亲手操作，确保按时交付。</p>
+            <a href="javascript:void(0)" class="back-link" onclick="showPage('home')"><i class="fa-solid fa-arrow-left"></i> &nbsp;返回主页</a>
+            <div class="content-card" style="text-align: center;">
+                <h4>扫码添加微信好友</h4>
+                <img src="img/wechat_qr.jpg" alt="微信二维码" class="qr-img">
+                <div class="wx-pill">微信号：rzdgdwx</div>
             </div>
         </div>
-
     </div>
 
-    <div class="footer-cta">
-        <a href="https://b23.tv/M00A0T8" class="btn btn-bili" target="_blank">
+    <div class="footer-nav">
+        <a href="https://b23.tv/M00A0T8" class="nav-btn nav-bili" target="_blank">
+            <i class="fa-brands fa-bilibili"></i>
             B站主页<span>视频战绩</span>
         </a>
-        <a href="https://m.tb.cn/h.75akOal?tk=DVPcfBfoHjD" class="btn btn-xianyu" target="_blank">
+        <a href="https://m.tb.cn/h.75akOal?tk=DVPcfBfoHjD" class="nav-btn nav-xianyu" target="_blank">
+            <i class="fa-solid fa-fish"></i>
             咸鱼下单<span>担保交易</span>
         </a>
-        <a href="javascript:void(0)" class="btn btn-contact" onclick="showPage('about')">
-            私聊咨询<span>添加微信</span>
+        <a href="javascript:void(0)" class="nav-btn nav-wx" onclick="showPage('about')">
+            <i class="fa-brands fa-weixin"></i>
+            私聊咨询<span>添加好友</span>
         </a>
+    </div>
+
+    <div id="myModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
     </div>
 
     <script>
+        // 页面切换脚本
         function showPage(pId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pId).classList.add('active');
             window.scrollTo(0, 0);
+        }
+        // 灯箱逻辑
+        function openModal(imgSrc) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            modal.style.display = "block";
+            modalImg.src = imgSrc;
+        }
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
         }
     </script>
 </body>
