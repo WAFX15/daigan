@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>认真代肝的往西 - 专业提瓦特管家</title>
+    <title>往西代肝工作室</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --wechat-green: #07c160;
             --bili-pink: #fb7299;
-            --huya-orange: #ff8200; /* 虎牙品牌橙 */
+            --huya-orange: #ff8200;
             --xianyu-gold: #f39c12;
             --primary-blue: #4a90e2;
             --text-main: #2c3e50;
@@ -43,7 +43,7 @@
         .avatar { width: 100%; height: 100%; object-fit: cover; }
 
         /* --- 模块卡片列表 --- */
-        /* 【核心调整】：底部 Padding 保持 95px，完美消除红框空白区 */
+        /* 【核心修改】：Padding 设为 95px 消除红框空白区域 */
         .page-container { padding: 10px 18px 95px; }
         .page { display: none; animation: slideUp 0.4s ease-out forwards; }
         .page.active { display: block; }
@@ -67,14 +67,16 @@
         .menu-text p { margin: 4px 0 0; font-size: 0.82rem; color: #a0a0a0; }
         .arrow { color: #e0e0e0; font-size: 0.85rem; padding-left: 10px; }
 
-        /* --- 详情页通用样式 --- */
+        /* --- 详情页价格卡片 --- */
         .content-card { background: white; border-radius: 22px; padding: 24px; margin-bottom: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
         .content-card h4 { margin: 0 0 18px; color: var(--primary-blue); font-size: 1.15rem; border-left: 5px solid var(--primary-blue); padding-left: 14px; }
-        .price-row { display: flex; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid #f8f8f8; font-size: 0.95rem; }
+        .price-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f8f8f8; font-size: 0.95rem; }
         .price-row:last-child { border-bottom: none; }
+        .price-label { color: #555; }
         .price-val { color: #e74c3c; font-weight: 700; }
+        .price-note { font-size: 0.75rem; color: #999; margin-top: 4px; line-height: 1.4; }
 
-        /* 进度跟踪按钮 */
+        /* --- 进度跟踪按钮 --- */
         .track-btn { display: block; background: var(--wechat-green); color: white; text-align: center; padding: 18px; border-radius: 18px; text-decoration: none; font-weight: bold; margin: 20px 0; font-size: 1rem; box-shadow: 0 8px 25px rgba(7, 193, 96, 0.2); }
         .notice-info { background: #f0f9f4; color: #2e7d32; padding: 18px; border-radius: 16px; font-size: 0.88rem; line-height: 1.7; border: 1px solid rgba(46, 125, 50, 0.08); }
 
@@ -89,40 +91,26 @@
         .gallery-img-box img { width: 100%; height: 100%; object-fit: contain; }
         .gallery-cap { font-size: 0.75rem; color: #888; margin-top: 8px; font-weight: 500; }
 
-        /* --- 弹窗 Modal 通用样式 --- */
+        /* --- 弹窗 Modal --- */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); backdrop-filter: blur(5px); }
         .modal-body { margin: 150px auto; width: 85%; max-width: 400px; }
         .modal-content-card { background: white; border-radius: 25px; padding: 25px; text-align: center; position: relative; animation: zoom 0.3s; }
         @keyframes zoom { from {transform:scale(0.8); opacity:0;} to {transform:scale(1); opacity:1;} }
         .close-icon { position: absolute; top: 15px; right: 20px; color: #ccc; font-size: 24px; cursor: pointer; }
 
-        /* --- 直播选择按钮 --- */
-        .live-option-btn {
-            display: flex; align-items: center; justify-content: center;
-            padding: 16px; border-radius: 15px; margin: 12px 0;
-            text-decoration: none; font-weight: 800; font-size: 1rem; color: white;
-            transition: transform 0.2s;
-        }
-        .live-option-btn:active { transform: scale(0.95); }
-        .live-option-btn i { margin-right: 10px; font-size: 1.4rem; }
+        /* 直播选择按钮 */
+        .live-option-btn { display: flex; align-items: center; justify-content: center; padding: 16px; border-radius: 15px; margin: 12px 0; text-decoration: none; font-weight: 800; font-size: 1rem; color: white; }
         .btn-bili-live { background: var(--bili-pink); box-shadow: 0 5px 15px rgba(251, 114, 153, 0.3); }
         .btn-huya-live { background: var(--huya-orange); box-shadow: 0 5px 15px rgba(255, 130, 0, 0.3); }
 
-        /* --- 底部固定导航 (紧凑型) --- */
+        /* --- 底部导航栏 (紧凑优化版) --- */
         .footer-nav {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            padding: 10px 15px 25px;
+            position: fixed; bottom: 0; left: 0; right: 0; padding: 10px 15px 25px;
             background: rgba(255,255,255,0.95); backdrop-filter: blur(25px);
-            display: flex; gap: 10px;
-            z-index: 1000; box-shadow: 0 -5px 25px rgba(0,0,0,0.05);
+            display: flex; gap: 10px; z-index: 1000; box-shadow: 0 -5px 25px rgba(0,0,0,0.05);
             border-radius: 25px 25px 0 0;
         }
-        .nav-btn {
-            flex: 1; text-align: center; padding: 8px 5px; border-radius: 16px;
-            text-decoration: none; font-weight: bold; font-size: 0.85rem;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            color: white; box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
+        .nav-btn { flex: 1; text-align: center; padding: 8px 5px; border-radius: 16px; text-decoration: none; font-weight: bold; font-size: 0.85rem; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
         .nav-btn i { font-size: 1.25rem; margin-bottom: 2px; }
         .nav-btn span { font-size: 0.68rem; font-weight: normal; opacity: 0.95; }
         
@@ -155,7 +143,7 @@
         <div id="home" class="page active">
             <div class="menu-item" onclick="showPage('services')">
                 <div class="menu-icon-box" style="color: #2196f3;"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-                <div class="menu-text"><h3>代肝业务</h3><p>可查看具体代肝详细价格表</p></div>
+                <div class="menu-text"><h3>代肝业务</h3><p>可查看具体代肝详细价格>ke></div>
                 <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
             </div>
 
@@ -167,36 +155,90 @@
 
             <div class="menu-item" onclick="showPage('credits')">
                 <div class="menu-icon-box" style="color: #fbc02d;"><i class="fa-solid fa-trophy"></i></div>
-                <div class="menu-text"><h3>信誉证明</h3><p>近期真实成交记录展示</p></div>
+                <div class="menu-text"><h3>信誉证明</h3><p>近期真实成交记录展示一览</p></div>
                 <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
             </div>
 
             <div class="menu-item" onclick="openLiveModal()">
                 <div class="menu-icon-box" style="color: #ff5722;"><i class="fa-solid fa-video"></i></div>
-                <div class="menu-text"><h3>观看直播</h3><p>B站虎牙双渠道实时过程监督</p></div>
+                <div class="menu-text"><h3>观看直播</h3><p>B站虎牙双重渠道实时监督</p></div>
                 <div class="arrow"><i class="fa-solid fa-chevron-right"></i></div>
             </div>
 
             <div class="disclaimer">
                 <strong>版权免责声明：</strong><br>
-                本站为个人服务展示，素材版权归米哈游所有。本站与官方无授权关系，承诺所承接业务均纯手工完成。
+                      本站为个人服务展示，素材版权归米哈游所有。
+                本站与官方无授权关系，承诺所承接代肝均以纯手工形式完成。
             </div>
         </div>
 
         <div id="services" class="page">
             <a href="javascript:void(0)" class="back-link" onclick="showPage('home')"><i class="fa-solid fa-arrow-left"></i> &nbsp;返回主页</a>
+            
             <div class="content-card">
-                <h4>日常/周常维护</h4>
-                <div class="price-row"><span>每日委托 / 天</span><span class="price-val">1r</span></div>
-                <div class="price-row"><span>体力清理 (180体/次)</span><span class="price-val">1.5r</span></div>
-                <div class="price-row"><span>周本 (3个)</span><span class="price-val">+2r / 周</span></div>
-                <div class="price-row"><span>城市声望 / 尘歌壶</span><span class="price-val">3r / 1r 周</span></div>
+                <h4>日常/周常托管</h4>
+                <div class="price-row">
+                    <div class="price-label">每日委托</div>
+                    <div class="price-val">1r / 天</div>
+                </div>
+                <div class="price-note">备注：有历练点且下单清体的情况下仅0.5r/天。</div>
+
+                <div class="price-row">
+                    <div class="price-label">每日体力 (180体)</div>
+                    <div class="price-val">1.5r / 次</div>
+                </div>
+                <div class="price-note">备注：默认打最新圣遗物本；双倍活动需补5r；加1r可每日上号两次确保不溢出。</div>
+
+                <div class="price-row">
+                    <div class="price-label">每周周本 (指定3个)</div>
+                    <div class="price-val">2r / 周</div>
+                </div>
+                <div class="price-note">备注：下单体力的基础下加2r，无下单基础直接指定完成6r。</div>
+
+                <div class="price-row">
+                    <div class="price-label">每周尘歌壶币与好感</div>
+                    <div class="price-val">1r / 周</div>
+                </div>
+                <div class="price-note">备注：包含兑换经验书、限时树脂并帮忙使用掉。</div>
+
+                <div class="price-row">
+                    <div class="price-label">每周城市声望或任务</div>
+                    <div class="price-val">3r / 周</div>
+                </div>
             </div>
+
             <div class="content-card">
-                <h4>挑战 & 任务</h4>
-                <div class="price-row"><span>深境螺旋 11/12层</span><span class="price-val">6r / 9r</span></div>
-                <div class="price-row"><span>幻想真境剧诗 (8/10/12幕)</span><span class="price-val">15/20/25r</span></div>
-                <div class="price-row"><span>版本活动 (大/小)</span><span class="price-val">35r / 10r</span></div>
+                <h4>挑战与活动</h4>
+                <div class="price-row"><span>版本大活动</span><span class="price-val">35r / 个</span></div>
+                <div class="price-row"><span>大活动内小活动</span><span class="price-val">10r / 个</span></div>
+                <div class="price-row"><span>常规小活动</span><span class="price-val">10-15r / 个</span></div>
+                <div class="price-row"><span>深境螺旋 11层 / 12层</span><span class="price-val">6r / 9r</span></div>
+                <div class="price-row"><span>幻想真境剧诗 (8/10/12幕)</span><span class="price-val">15 / 20 / 25r</span></div>
+                <div class="price-row"><span>幽静危战 (难度3 / 难度4)</span><span class="price-val">6r / 9r</span></div>
+                <div class="price-row"><span>幻想游迹 (角色拖尾)</span><span class="price-val">3-5r / 个</span></div>
+                <div class="price-row"><span>且试身手</span><span class="price-val">1r / 个</span></div>
+            </div>
+
+            <div class="content-card">
+                <h4>任务与材料采集</h4>
+                <div class="price-row"><span>传说任务 / 邀约任务</span><span class="price-val">15r / 个</span></div>
+                <div class="price-row"><span>首领击杀材料 (46个)</span><span class="price-val">15r</span></div>
+                <div class="price-row"><span>地图采集材料 (168个)</span><span class="price-val">15-25r</span></div>
+                <div class="price-row"><span>怪物掉落材料 (100个)</span><span class="price-val">5r</span></div>
+                <div class="price-row"><span>矿石 (100个)</span><span class="price-val">10r</span></div>
+                <div class="price-row"><span>晶蝶 (100只)</span><span class="price-val">8r</span></div>
+                <div class="price-row"><span>钓鱼 (指定 / 随机)</span><span class="price-val">0.3 / 0.2r 条</span></div>
+            </div>
+
+            <div class="content-card" style="border: 1px solid #e8f5e9;">
+                <h4 style="color: var(--wechat-green); border-left-color: var(--wechat-green);">往西服务承诺</h4>
+                <div class="price-note" style="color: #333; font-size: 0.85rem;">
+                    • <b>漏做少做双倍赔付</b>：专业负责，使命必达。<br>
+                    • <b>实时互动</b>：首次托管会返图；大部分重要内容均截图上传。<br>
+                    • <b>福利代领</b>：托管期间帮兑换前瞻码；每个卡池上线帮领邮件防止过期。<br>
+                    • <b>透明监管</b>：委托以联机形式完成，可随时通过原石/体力变化核实。<br>
+                    • <b>公平结算</b>：老板做完的内容可退款（上号前说明）。
+                </div>
             </div>
         </div>
 
@@ -226,23 +268,23 @@
                         <div class="gallery-cap">客户五星好评</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openImgModal('img/credit2.jpg')"><img src="img/credit2.jpg" alt="2"></div>
+                        <div class="gallery-img-box" onclick="openModal('img/credit2.jpg')"><img src="img/credit2.jpg" alt="2"></div>
                         <div class="gallery-cap">大额订单转账</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openImgModal('img/credit3.jpg')"><img src="img/credit3.jpg" alt="3"></div>
+                        <div class="gallery-img-box" onclick="openModal('img/credit3.jpg')"><img src="img/credit3.jpg" alt="3"></div>
                         <div class="gallery-cap">交付确认截图</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openImgModal('img/credit4.jpg')"><img src="img/credit4.jpg" alt="4"></div>
+                        <div class="gallery-img-box" onclick="openModal('img/credit4.jpg')"><img src="img/credit4.jpg" alt="4"></div>
                         <div class="gallery-cap">流程沟通确认</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openImgModal('img/credit5.jpg')"><img src="img/credit5.jpg" alt="5"></div>
+                        <div class="gallery-img-box" onclick="openModal('img/credit5.jpg')"><img src="img/credit5.jpg" alt="5"></div>
                         <div class="gallery-cap">交付结果展示</div>
                     </div>
                     <div class="gallery-item">
-                        <div class="gallery-img-box" onclick="openImgModal('img/credit6.jpg')"><img src="img/credit6.jpg" alt="6"></div>
+                        <div class="gallery-img-box" onclick="openModal('img/credit6.jpg')"><img src="img/credit6.jpg" alt="6"></div>
                         <div class="gallery-cap">长期老客续单</div>
                     </div>
                 </div>
@@ -260,7 +302,7 @@
         <div class="modal-body" onclick="event.stopPropagation()">
             <div class="modal-content-card">
                 <span class="close-icon" onclick="closeLiveModal()">&times;</span>
-                <h4 style="margin-bottom: 20px; color: var(--text-main);">选择观看平台</h4>
+                <h4 style="margin-bottom: 20px;">选择观看平台</h4>
                 <a href="https://b23.tv/FYJsrG3" target="_blank" class="live-option-btn btn-bili-live">
                     <i class="fa-brands fa-bilibili"></i> 前往 Bilibili 直播
                 </a>
@@ -294,15 +336,9 @@
             document.getElementById(pId).classList.add('active');
             window.scrollTo(0, 0);
         }
-
-        // 直播弹窗逻辑
         function openLiveModal() { document.getElementById("liveModal").style.display = "block"; }
         function closeLiveModal() { document.getElementById("liveModal").style.display = "none"; }
-
-        // 微信弹窗逻辑
         function showAboutModal(show) { document.getElementById("aboutModal").style.display = show ? "block" : "none"; }
-
-        // 图片灯箱逻辑
         function openImgModal(imgSrc) {
             var modal = document.getElementById("imgModal");
             var modalImg = document.getElementById("imgDisplay");
